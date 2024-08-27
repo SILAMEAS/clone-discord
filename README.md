@@ -36,11 +36,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZnJhbmstYmFzaWxpc2stNTYuY2xlcmsuYWNjb3VudHMuZGV2JA
-CLERK_SECRET_KEY=sk_test_IXoIAcmTR9kKtS6Dym9NFRIXIvrnZuy5fyNif37iAl
-
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
-DATABASE_URL=mysql://avnadmin:AVNS_XgjAUDRr8YdfqQhCPeH@mysql-aiven-sql.b.aivencloud.com:16717/discord?ssl-mode=REQUIRED
