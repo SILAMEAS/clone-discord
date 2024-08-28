@@ -1,7 +1,8 @@
-import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db";
-import { MemeberRole } from "@prisma/client";
-import { NextResponse } from "next/server";
+import {currentProfile} from "@/lib/current-profile";
+import {db} from "@/lib/db";
+import {MemeberRole} from "@prisma/client";
+import {NextResponse} from "next/server";
+import {v4 as uuidv4} from 'uuid'
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +16,7 @@ export async function POST(req: Request) {
         profileId: profile.id,
         name,
         imageUrl,
-        inviteCode: "12345",
+        inviteCode: uuidv4(),
         channel: { create: [{ profileId: profile.id, name: "general" }] },
         member: {
           create: [{ profileId: profile.id, role: MemeberRole.ADMIN }],

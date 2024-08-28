@@ -1,5 +1,7 @@
-import React, { ReactNode } from "react";
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+import React from "react";
+import {ILayout} from "@/type";
+
+const AuthLayout = ({ children }:ILayout) => {
   return (
     <div className={"h-full w-full flex items-center justify-center"}>
       {children}
