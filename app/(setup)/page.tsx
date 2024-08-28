@@ -2,6 +2,7 @@ import { ToggleThem } from "@/components/menu-toggle-theme";
 import InitialModal from "@/components/modals/initial-modal";
 import { db } from "@/lib/db";
 import { initialProfile } from "@/lib/initial-profile";
+import { UserButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 const SetupPage = async () => {
@@ -20,6 +21,7 @@ const SetupPage = async () => {
   return (
     <div>
       <ToggleThem />
+      <UserButton />
       <InitialModal />
     </div>
   );
