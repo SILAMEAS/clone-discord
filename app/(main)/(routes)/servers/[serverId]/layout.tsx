@@ -11,7 +11,6 @@ const ServerIdLayout = async ({children,params}:ILayout&{params:{serverId:string
     if(!profile){
         return auth().redirectToSignIn()
     }
-    console.log("param",params)
     const server= await  db.server.findUnique({where:{id:params.serverId,member:{
         some:{
             profileId:profile.id

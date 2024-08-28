@@ -4,7 +4,6 @@ import {redirect} from "next/navigation";
 import {db} from "@/lib/db";
 import {TypeChannel} from "@prisma/client";
 import ServerHeader from "@/components/servers/server-header";
-import {IServerWithMembersWithProfiles} from "@/type";
 
 interface IServerSideBar{
     serverId:string;
@@ -61,14 +60,9 @@ const ServerSideBar =async (props:IServerSideBar) => {
                 return role=mem.role;
             }
         })
-    console.log("textChannel",textChannel)
-    console.log("audioChannel",audioChannel)
-    console.log("videoChannel",videoChannel)
-    console.log("members",members)
-    console.log("role",role)
     return (
         <div className={'h-full flex flex-col text-primary w-full dark:bg-[#2B2D31] bg-[#F2F3F5]'}>
-            <ServerHeader server={server as unknown as IServerWithMembersWithProfiles} role={role}/>
+            <ServerHeader server={server} role={role}/>
         </div>
     );
 };

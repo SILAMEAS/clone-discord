@@ -1,21 +1,9 @@
 // Note: `useUploadThing` is IMPORTED FROM YOUR CODEBASE using the `generateReactHelpers` function
-import { useUploadThing } from "@/lib/uploadingthing";
-import { useDropzone } from "@uploadthing/react/hooks";
-import React, {
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  useCallback,
-  useState,
-} from "react";
-import {
-  FieldValues,
-  Path,
-  PathValue,
-  UseFormRegister,
-  UseFormSetValue,
-  UseFormWatch,
-} from "react-hook-form";
-import { generateClientDropzoneAccept } from "uploadthing/client";
+import {useUploadThing} from "@/lib/uploadingthing";
+import {useDropzone} from "@uploadthing/react/hooks";
+import React, {DetailedHTMLProps, InputHTMLAttributes, useCallback, useState,} from "react";
+import {FieldValues, Path, PathValue, UseFormRegister, UseFormSetValue, UseFormWatch,} from "react-hook-form";
+import {generateClientDropzoneAccept} from "uploadthing/client";
 
 export interface IInputUploadthing<T extends FieldValues> {
   register: UseFormRegister<T>;
@@ -44,9 +32,7 @@ export default function InputUploadThing<T extends FieldValues>(
 
   const { startUpload, permittedFileInfo } = useUploadThing("imageUploader", {
     onClientUploadComplete: (file: any) => {
-      // console.log("->", file);
       setValue(id, file[0].url as PathValue<T, Path<T>>);
-      console.log("watch", watch(id));
     },
     onUploadError: () => {
       alert("error occurred while uploading");

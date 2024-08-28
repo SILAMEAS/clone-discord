@@ -1,9 +1,7 @@
-import React from 'react';
 import {currentProfile} from "@/lib/current-profile";
 import {auth} from "@clerk/nextjs/server";
 import {redirect} from "next/navigation";
 import {db} from "@/lib/db";
-import {MemeberRole} from "@prisma/client";
 
 interface IInviteCode{
     params:{
@@ -19,7 +17,7 @@ const InviteCodePage = async (props:IInviteCode) => {
     if(!inviteCode){
         return redirect('/')
     }
-    const serverExiting=await db.server.findFirst({
+    const serverExiting= await db.server.findFirst({
         where:{
             inviteCode,
             member:{
@@ -29,23 +27,19 @@ const InviteCodePage = async (props:IInviteCode) => {
             }
         },
     })
-    if(serverExiting) redirect('/servers/'+serverExiting.id);
-    const joinToServer=await db.server.update({
+    if(serverExiting) return redirect('/servers/'+serverExiting?.id)
+    const joinNewServer= await db.server.update({
         where:{
             inviteCode
         },
         data:{
             member:{
-                create:{profileId:profile.id,role:MemeberRole.GUEST}
+                create:{profileId:profile.id}
             }
         }
     })
-
-    return (
-        <div>
-            Hello Invite
-        </div>
-    );
+    if(joinNewServer) return redirect('/servers/'+joinNewServer?.id)
+    return null;
 };
 
 export default InviteCodePage;

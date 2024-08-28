@@ -1,6 +1,6 @@
 "use client";
-import { UploadButton } from "@/lib/uploadingthing";
-import { X } from "lucide-react";
+import {UploadButton} from "@/lib/uploadingthing";
+import {X} from "lucide-react";
 import Image from "next/image";
 
 interface IFileUpload {
@@ -10,7 +10,6 @@ interface IFileUpload {
 }
 export const FileUpload = (props: Readonly<IFileUpload>) => {
   const { endpoint, onChange, value } = props;
-  console.log("value", value);
   const fileType = value?.split(".").pop();
   if (value && fileType !== "pdf") {
     return (

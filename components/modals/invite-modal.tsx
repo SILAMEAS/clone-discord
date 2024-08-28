@@ -32,7 +32,7 @@ const InviteModal = () => {
           if(res)
           onOpen('invite',{server:res.data})
       }catch (e){
-          console.log(e)
+          return e;
       }finally {
           setLoading(false)
       }
