@@ -2,6 +2,7 @@
 
 import { Plus } from "lucide-react";
 import { ActionTooltip } from "../action-tooltip";
+import {Button} from "@/components/ui/button";
 
 export const NavigationAction = () => {
   return (
