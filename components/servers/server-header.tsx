@@ -1,23 +1,15 @@
 "use client";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useModal } from "@/hooks/use-modal-store";
-import { IServerWithMembersWithProfiles } from "@/type";
-import { MemeberRole } from "@prisma/client";
-import {
-  ChevronDown,
-  LogOut,
-  PlusCircle,
-  Settings,
-  Trash,
-  User,
-  UserPlus,
-} from "lucide-react";
+import {useModal} from "@/hooks/use-modal-store";
+import {IServerWithMembersWithProfiles} from "@/type";
+import {MemeberRole} from "@prisma/client";
+import {ChevronDown, LogOut, PlusCircle, Settings, Trash, User, UserPlus,} from "lucide-react";
 
 interface IServerHeader {
   server: IServerWithMembersWithProfiles;
@@ -88,6 +80,7 @@ const ServerHeader = (props: IServerHeader) => {
         {isAdmin && (
           <DropdownMenuItem
             className={" px-3 py-2 text-sm cursor-pointer text-rose-500"}
+            onClick={()=>onOpen('deleteServer',{server})}
           >
             Delete Server
             <Trash className={"h-4 w-4 ml-auto"} />
@@ -96,6 +89,7 @@ const ServerHeader = (props: IServerHeader) => {
         {!isAdmin && (
           <DropdownMenuItem
             className={" px-3 py-2 text-sm cursor-pointer text-rose-500"}
+            onClick={()=>onOpen('leaveServer',{server})}
           >
             Leave Server
             <LogOut className={"h-4 w-4 ml-auto"} />

@@ -1,8 +1,11 @@
-import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db";
-import { BadException } from "@/lib/exceptions/bad-exceptions/BadExceptions";
-import { UnauthencitationExceptions } from "@/lib/exceptions/un-authencitations/UnauthencitationExceptions";
-import { NextResponse } from "next/server";
+import {currentProfile} from "@/lib/current-profile";
+import {db} from "@/lib/db";
+import {BadException} from "@/lib/exceptions/bad-exceptions/BadExceptions";
+import {UnauthencitationExceptions} from "@/lib/exceptions/un-authencitations/UnauthencitationExceptions";
+import {NextResponse} from "next/server";
+import {
+  InternalServerErrorExceptions
+} from "@/lib/exceptions/internal-server-exception/Internal-server-error-exceptions";
 
 export async function PATCH(
   req: Request,
@@ -107,6 +110,6 @@ export async function DELETE(
 
     return NextResponse.json(server);
   } catch (error) {
-    return new NextResponse("Internel Error", { status: 500 });
+    return InternalServerErrorExceptions();
   }
 }

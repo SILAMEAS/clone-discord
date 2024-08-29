@@ -3,6 +3,9 @@ import {db} from "@/lib/db";
 import {MemeberRole} from "@prisma/client";
 import {NextResponse} from "next/server";
 import {v4 as uuidv4} from 'uuid'
+import {
+  InternalServerErrorExceptions
+} from "@/lib/exceptions/internal-server-exception/Internal-server-error-exceptions";
 
 export async function POST(req: Request) {
   try {
@@ -25,6 +28,6 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(server);
   } catch (error) {
-    return new NextResponse("Internel Error", { status: 500 });
+    return InternalServerErrorExceptions();
   }
 }
