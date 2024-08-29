@@ -1,5 +1,6 @@
-import { BadException, currentProfile } from "@/lib/current-profile";
+import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { BadException } from "@/lib/exceptions/bad-exceptions/BadExceptions";
 import { UnauthencitationExceptions } from "@/lib/exceptions/un-authencitations/UnauthencitationExceptions";
 import { NextResponse } from "next/server";
 
