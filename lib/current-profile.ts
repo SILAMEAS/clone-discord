@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 import { db } from "./db";
 
 export const currentProfile = async () => {
@@ -6,5 +7,5 @@ export const currentProfile = async () => {
   if (!userId) {
     return null;
   }
-  return db.profile.findUnique({where: {userId}});
+  return db.profile.findUnique({ where: { userId } });
 };

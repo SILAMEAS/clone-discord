@@ -1,6 +1,6 @@
 "use client";
-import {UploadButton} from "@/lib/uploadingthing";
-import {X} from "lucide-react";
+import { UploadButton } from "@/lib/uploadingthing";
+import { X } from "lucide-react";
 import Image from "next/image";
 
 interface IFileUpload {
@@ -32,7 +32,7 @@ export const FileUpload = (props: Readonly<IFileUpload>) => {
     );
   }
   return (
-    <div className="bg-blue-700 p-5">
+    <div className="bg-green-400 w-full">
       <UploadButton
         endpoint={endpoint as any}
         onClientUploadComplete={(res) => {
@@ -40,6 +40,9 @@ export const FileUpload = (props: Readonly<IFileUpload>) => {
         }}
         onUploadError={(error: Error) => {
           alert(`ERROR! ${error.message}`);
+        }}
+        appearance={{
+          button: {},
         }}
       />
       {/* <UploadDropzone
