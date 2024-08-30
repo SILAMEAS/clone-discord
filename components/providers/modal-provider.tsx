@@ -1,14 +1,14 @@
 "use client";
-import DeleteServerModal from "@/components/modals/delete-server-modal";
-import EditServerModal from "@/components/modals/edit-server-modal";
+import DeleteServerModal from "@/components/modals/servers/delete-server-modal";
+import EditServerModal from "@/components/modals/servers/edit-server-modal";
 import InviteModal from "@/components/modals/invite-modal";
-import LeaveServerModal from "@/components/modals/leave-server-modal";
-import { useEffect, useState } from "react";
-import CreateChannelModal from "../modals/create-channel-modal";
-import CreateServerModal from "../modals/create-server-modal";
-import DeleteChannelModal from "../modals/delete-channel-modal";
+import LeaveServerModal from "@/components/modals/servers/leave-server-modal";
+import {useEffect, useState} from "react";
+import CreateChannelModal from "../modals/channels/create-channel-modal";
+import CreateServerModal from "../modals/servers/create-server-modal";
+import DeleteChannelModal from "../modals/channels/delete-channel-modal";
 import MemberModal from "../modals/members-modal";
-import EditChannelModal from "../modals/edit-channel-modal";
+import EditChannelModal from "../modals/channels/edit-channel-modal";
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);

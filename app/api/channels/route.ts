@@ -1,9 +1,11 @@
-import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db";
-import { BadException } from "@/lib/exceptions/bad-exceptions/BadExceptions";
-import { InternalServerErrorExceptions } from "@/lib/exceptions/internal-server-exception/Internal-server-error-exceptions";
-import { MemeberRole } from "@prisma/client";
-import { NextResponse } from "next/server";
+import {currentProfile} from "@/lib/current-profile";
+import {db} from "@/lib/db";
+import {BadException} from "@/lib/exceptions/bad-exceptions/BadExceptions";
+import {
+  InternalServerErrorExceptions
+} from "@/lib/exceptions/internal-server-exception/Internal-server-error-exceptions";
+import {MemeberRole} from "@prisma/client";
+import {NextResponse} from "next/server";
 
 export async function POST(req: Request) {
   try {
@@ -24,7 +26,6 @@ export async function POST(req: Request) {
     const server = await db.server.update({
       where: {
         id: serverId,
-        profileId: profile.id,
         member: {
           some: {
             role: { in: [MemeberRole.ADMIN, MemeberRole.MODERATOR] },

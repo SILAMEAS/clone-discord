@@ -158,9 +158,42 @@ exports.Prisma.ChannelScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  fileUrl: 'fileUrl',
+  memberId: 'memberId',
+  channelId: 'channelId',
+  delete: 'delete',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ConversationScalarFieldEnum = {
+  id: 'id',
+  memberOneId: 'memberOneId',
+  memberTwoId: 'memberTwoId'
+};
+
+exports.Prisma.DirecMessageScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  fileUrl: 'fileUrl',
+  memberid: 'memberid',
+  conversationId: 'conversationId',
+  delete: 'delete',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.MemeberRole = exports.$Enums.MemeberRole = {
   ADMIN: 'ADMIN',
@@ -178,7 +211,10 @@ exports.Prisma.ModelName = {
   Profile: 'Profile',
   Server: 'Server',
   Member: 'Member',
-  Channel: 'Channel'
+  Channel: 'Channel',
+  Message: 'Message',
+  Conversation: 'Conversation',
+  DirecMessage: 'DirecMessage'
 };
 
 /**

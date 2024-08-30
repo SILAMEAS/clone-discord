@@ -1,38 +1,19 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useModal } from "@/hooks/use-modal-store";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { TypeChannel } from "@prisma/client";
+import {Button} from "@/components/ui/button";
+import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,} from "@/components/ui/dialog";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form";
+import {Input} from "@/components/ui/input";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import {useModal} from "@/hooks/use-modal-store";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {TypeChannel} from "@prisma/client";
 import axios from "axios";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import {Loader2} from "lucide-react";
+import {useRouter} from "next/navigation";
 import qs from "query-string";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import {useForm} from "react-hook-form";
+import {z} from "zod";
+import {useEffect} from "react";
 
 const formSchema = z.object({
   nameChannel: z
@@ -52,8 +33,8 @@ const EditChannelModal = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      nameChannel: "",
-      typeChannel: channelType ?? TypeChannel.TEXT,
+      nameChannel: channel?.name ?? "",
+      typeChannel:channel?.type ?? channelType ?? TypeChannel.TEXT,
     },
   });
   const router = useRouter();
@@ -79,7 +60,7 @@ const EditChannelModal = () => {
       form.setValue("nameChannel", channel?.name);
       form.setValue("typeChannel", channel?.type);
     }
-  }, [channel, form]);
+  }, [channel, isModalOpen]);
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className={"bg-white text-black p-0 overflow-hidden"}>
