@@ -2,23 +2,23 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { BadException } from "@/lib/exceptions/bad-exceptions/BadExceptions";
 import { InternalServerErrorExceptions } from "@/lib/exceptions/internal-server-exception/Internal-server-error-exceptions";
+import { UnauthencitationExceptions } from "@/lib/exceptions/un-authencitations/UnauthencitationExceptions";
 import { MemeberRole } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { channelId: string } }
+) {
   try {
-    const { nameChannel: name, typeChannel: type } = await req.json();
     const profile = await currentProfile();
     const { searchParams } = new URL(req.url);
     const [serverId] = [searchParams.get("serverId")];
     if (!profile) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return UnauthencitationExceptions();
     }
     if (!serverId) {
       return BadException("Server ID missing");
-    }
-    if (name === "general") {
-      return BadException("Name cannot be 'general'");
     }
 
     const server = await db.server.update({
@@ -33,10 +33,8 @@ export async function POST(req: Request) {
       },
       data: {
         channel: {
-          create: {
-            name,
-            type,
-            profileId: profile.id,
+          delete: {
+            id: params?.channelId,
           },
         },
       },

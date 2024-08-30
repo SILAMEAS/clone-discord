@@ -159,7 +159,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Coding_Life\\MY_APP\\discord-clone\\prisma\\generated\\client",
+      "value": "D:\\mine\\clone-discord\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -173,11 +173,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\Coding_Life\\MY_APP\\discord-clone\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\mine\\clone-discord\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",

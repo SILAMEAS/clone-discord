@@ -1,6 +1,6 @@
 "use client";
-import {UploadButton} from "@/lib/uploadingthing";
-import {X} from "lucide-react";
+import { UploadButton } from "@/lib/uploadingthing";
+import { X } from "lucide-react";
 import Image from "next/image";
 
 interface IFileUpload {
@@ -43,8 +43,9 @@ export const FileUpload = (props: Readonly<IFileUpload>) => {
         }}
         appearance={{
           button: {
-              backgroundColor:"blue"
-          }
+            minWidth: "120px",
+            backgroundColor: "blue",
+          },
         }}
       />
       {/* <UploadDropzone

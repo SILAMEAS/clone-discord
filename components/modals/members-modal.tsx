@@ -61,7 +61,7 @@ const MemberModal = () => {
       router.refresh();
       onOpen("members", { server: res.data });
     } catch (error) {
-      console.log(error);
+      console.error("MemberModal->onKick", error);
     } finally {
       setLoadingId("");
     }
