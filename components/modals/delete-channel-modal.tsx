@@ -10,7 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import { useModal } from "@/hooks/use-modal-store";
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import qs from "query-string";
 import { useState } from "react";
 
 const DeleteChannelModal = () => {
@@ -18,7 +20,7 @@ const DeleteChannelModal = () => {
     type,
     isOpen,
     onClose,
-    data: { server },
+    data: { channel, server },
   } = useModal();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -27,7 +29,13 @@ const DeleteChannelModal = () => {
   const onClick = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/servers/${server?.id}/channel`);
+      const url = qs.stringifyUrl({
+        url: `/api/channels/${channel?.id}`,
+        query: {
+          serverId: server?.id,
+        },
+      });
+      await axios.delete(url);
       onClose();
       router.refresh();
     } catch (e) {
@@ -48,7 +56,7 @@ const DeleteChannelModal = () => {
             Are you sure you want to Delete{" "}
             <span
               className={"font-semibold text-indigo-500"}
-            >{`"${server?.name}"`}</span>{" "}
+            >{`"${channel?.name}"`}</span>{" "}
             channel?
           </DialogDescription>
         </DialogHeader>
@@ -62,7 +70,13 @@ const DeleteChannelModal = () => {
               disabled={loading}
               onClick={onClick}
             >
-              Delete
+              {loading ? (
+                <Loader2
+                  className={"animate-spin text-zinc-500 ml-auto w-4 h-4"}
+                />
+              ) : (
+                "Delete"
+              )}
             </Button>
           </div>
         </DialogFooter>

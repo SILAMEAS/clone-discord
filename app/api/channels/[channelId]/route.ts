@@ -24,7 +24,7 @@ export async function DELETE(
     const server = await db.server.update({
       where: {
         id: serverId,
-        profileId: profile.id,
+        // profileId: profile.id,
         member: {
           some: {
             role: { in: [MemeberRole.ADMIN, MemeberRole.MODERATOR] },
@@ -35,6 +35,52 @@ export async function DELETE(
         channel: {
           delete: {
             id: params?.channelId,
+            name: { not: "general" },
+          },
+        },
+      },
+    });
+    return NextResponse.json(server);
+  } catch (error) {
+    return InternalServerErrorExceptions();
+  }
+}
+
+export async function PATCH(
+  req: Request,
+  { params }: { params: { channelId: string } }
+) {
+  try {
+    const { nameChannel: name, typeChannel: type } = await req.json();
+    const profile = await currentProfile();
+    const { searchParams } = new URL(req.url);
+    const [serverId] = [searchParams.get("serverId")];
+    if (!profile) {
+      return UnauthencitationExceptions();
+    }
+    if (!serverId) {
+      return BadException("Server ID missing");
+    }
+
+    const server = await db.server.update({
+      where: {
+        id: serverId,
+        member: {
+          some: {
+            role: { in: [MemeberRole.ADMIN, MemeberRole.MODERATOR] },
+          },
+        },
+      },
+      data: {
+        channel: {
+          update: {
+            where: {
+              id: params?.channelId,
+            },
+            data: {
+              name,
+              type,
+            },
           },
         },
       },
