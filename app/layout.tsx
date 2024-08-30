@@ -10,6 +10,7 @@ import React from "react";
 import {ourFileRouter} from "./api/uploadthing/core";
 import "./globals.css";
 import {ModalProvider} from "@/components/providers/modal-provider";
+import {SocketProvider} from "@/components/providers/socket-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -43,8 +44,10 @@ export default function RootLayout({
                */
               routerConfig={extractRouterConfig(ourFileRouter)}
             />
-            <ModalProvider/>
-            {children}
+            <SocketProvider>
+              <ModalProvider/>
+              {children}
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>

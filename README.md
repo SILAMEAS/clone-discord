@@ -18,3 +18,4 @@ ready time you modify your schema you must run this script:
 if your data still having while you already run both script above you can run script : npx prisma migrate reset
 
 delete nodules : rm -rf node_modules
+delete .next: rm -rf .next
