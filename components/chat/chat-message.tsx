@@ -8,6 +8,7 @@ import {Fragment} from "react";
 import {ChatItem} from "@/components/chat/chat-item";
 import {format} from "date-fns";
 import {DATE_FORMAT} from "@/app/utils/constants/constant";
+import {useChatSocket} from "@/hooks/query/use-chat-socket";
 
 
 interface IChatMessage{
@@ -23,8 +24,9 @@ interface IChatMessage{
 }
 export const ChatMessages=({chatId,paramKey,paramValue,type,socketUrl,socketQuery
 ,name,member,apiUrl}:IChatMessage)=>{
-    const queryKey=`chat:${chatId}`
+    const [queryKey,addKey,updateKey]=[`chat:${chatId}`,`chat:${chatId}:messages`,`chat:${chatId}:messages:update`]
     const query=userChatQuery({queryKey,paramKey,paramValue,apiUrl});
+    useChatSocket({queryKey,updateKey,addKey})
     if(query.status==='error'){
         return <div className={'flex flex-col flex-1 justify-center items-center'}>
             <ServerCrash className={'h-7 w-7 text-zinc-500 my-4'}/>

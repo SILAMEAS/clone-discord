@@ -65,7 +65,6 @@ export default async function handler(req:NextApiRequest,res:NextApiResponseServ
                 }
             }
         });
-        console.log("message",message)
         const channelKey=`chat:${channelId}:message`;
         res?.socket?.server?.io?.emit(channelKey,message);
         return res.status(200).json({message})
