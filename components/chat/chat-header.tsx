@@ -2,7 +2,7 @@ import {Hash} from "lucide-react";
 import {MobileToggle} from "@/components/mobile-toggle";
 import {UserAvatar} from "@/components/user-avatar";
 import {SocketIndicator} from "@/components/socket-indicator";
-import {optionChat} from "@/type";
+import {typeOptionChat} from "@/type";
 
 interface IChatHeader{
     serverId:string;

@@ -135,3 +135,10 @@ Note : .env
 because I protect path in socket-provider.tsx and path in io.ts different because when both of path different socket.io will error
 can't listen different port;
 example : you make action at port : A and you listen at port : B 
+
+[//]: # (When prisma got error doesn't know Prism/Client)
+rm -rf node_modules
+rm -rf .next
+npm i
+npx prisma generate
+

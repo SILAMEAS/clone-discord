@@ -2,8 +2,7 @@ import {NextApiRequest} from "next";
 import {NextApiResponseServerIo} from "@/type";
 import {currentProfilePages} from "@/lib/current-profile-pages";
 import {db} from "@/lib/db";
-import {$Enums} from "@/prisma/generated/client";
-import MemeberRole = $Enums.MemeberRole;
+import {MemeberRole} from "@prisma/client";
 
 
 export default async function handler(req:NextApiRequest,res:NextApiResponseServerIo){

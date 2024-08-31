@@ -1,10 +1,9 @@
 "use client";
 import {IMemberWithProfile} from "@/type";
-import {Member} from "@prisma/client";
+import {Member, MemeberRole} from "@prisma/client";
 import {UserAvatar} from "@/components/user-avatar";
 import {ActionTooltip} from "@/components/action-tooltip";
 import {roleIconMap} from "@/app/utils/constants/constant";
-import {$Enums} from "@/prisma/generated/client";
 import Image from "next/image";
 import {Edit, FileIcon, Trash} from "lucide-react";
 import {useEffect, useState} from "react";
@@ -19,7 +18,6 @@ import qs from "query-string";
 import axios from "axios";
 import {useParams, useRouter} from "next/navigation";
 import {useModal} from "@/hooks/store/use-modal-store";
-import MemeberRole = $Enums.MemeberRole;
 
 interface IChatItem{
     id:string;
@@ -59,7 +57,6 @@ export const ChatItem=({fileUrl,timestamp,member,id,content,currentMember,delete
     const isOwner = currentMember.id=== member.id;
     const isModerator = currentMember.role===MemeberRole.MODERATOR;
     const [isEditing, setIsEditing] = useState(false);
-    const [isDeleting, setIsDeleting] = useState(false)
     const canDeleteMessage=!deleted&&(isAdmin||isOwner||isModerator);
     const canEditMessage=!deleted&&isOwner&&!fileUrl;
     const isPDF = fileType==='pdf'&&fileUrl;
