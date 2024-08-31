@@ -12,11 +12,10 @@ const ioHandler=(req:NextApiResponse,res:NextApiResponseServerIo)=>{
     if(!res.socket.server.io){
         const path="/api/socket/io";
         const httpServer:NetServer=res.socket.server as any;
-        const io = new ServerIO(httpServer,{
+        res.socket.server.io = new ServerIO(httpServer,{
             path:path,
             addTrailingSlash:false
         });
-        res.socket.server.io=io;
     }
     res.end();
 }
