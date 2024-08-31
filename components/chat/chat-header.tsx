@@ -7,7 +7,7 @@ import {optionChat} from "@/type";
 interface IChatHeader{
     serverId:string;
     name:string;
-    type:optionChat;
+    type:typeOptionChat;
     imageUrl?:string;
 }
 export const ChatHeader=({type,serverId,name,imageUrl}:IChatHeader)=>{
