@@ -18,6 +18,7 @@ import {Button} from "@/components/ui/button";
 import qs from "query-string";
 import axios from "axios";
 import {useParams, useRouter} from "next/navigation";
+import {useModal} from "@/hooks/store/use-modal-store";
 import MemeberRole = $Enums.MemeberRole;
 
 interface IChatItem{
@@ -37,6 +38,7 @@ const formSchema=z.object({
 
 })
 export const ChatItem=({fileUrl,timestamp,member,id,content,currentMember,deleted,isUpdated,socketUrl,socketQuery}:IChatItem)=>{
+    const {onOpen}=useModal();
     const form=useForm<z.infer<typeof formSchema>>({
         resolver:zodResolver(formSchema),
         defaultValues:{
@@ -67,7 +69,8 @@ export const ChatItem=({fileUrl,timestamp,member,id,content,currentMember,delete
             url:`${socketUrl}/${id}`,
             query:socketQuery
         })
-        await axios.patch(url,value)
+        await axios.patch(url,value);
+        setIsEditing(false);
     }
     const isLoading=form.formState.isSubmitting;
     useEffect(() => {
@@ -167,7 +170,7 @@ export const ChatItem=({fileUrl,timestamp,member,id,content,currentMember,delete
                     )
                 }
                 <ActionTooltip label={'Delete'}>
-                    <Trash onClick={()=>setIsDeleting(true)} className={'cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition'}/>
+                    <Trash onClick={()=>onOpen('deleteMessage',{apiUrl:`${socketUrl}/${id}`,query:socketQuery})} className={'cursor-pointer ml-auto w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition'}/>
                 </ActionTooltip>
             </div>
         )}
