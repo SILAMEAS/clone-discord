@@ -4,6 +4,7 @@ import {redirect} from "next/navigation";
 import {db} from "@/lib/db";
 import {getOrCreateConversations} from "@/lib/conversation";
 import {ChatHeader} from "@/components/chat/chat-header";
+import {ChatInput} from "@/components/chat/chat-input";
 
 interface IConversationIdPage{
    params:{
@@ -34,7 +35,15 @@ const ConversationIdPage =async ({params:{memberId,serverId}}:IConversationIdPag
     return (
         <div className={'bg-white dark:bg-[#313338] flex flex-col h-full'}>
             <ChatHeader serverId={serverId} name={otherMember.profile.name} type={'conversation'} imageUrl={otherMember.profile.imageUrl}/>
-            ConversationIdPage
+            <ChatInput
+                type={'conversation'}
+                name={otherMember.profile.name}
+                apiUrl={`${process.env.NEXT_PUBLIC_SOCKET_URL}/messages`}
+                query={{
+                    conversationId:conversation.id,
+                    serverId,
+                }}
+            />
         </div>
     );
 };

@@ -13,3 +13,5 @@ export type IServerWithMembersWithProfiles = Server & {
 };
 export type IPrismaMember = Member & { profile: Profile };
 export type NextApiResponseServerIo=NextApiResponse&{socket:Socket&{server:NetServer&{io:SocketIOServer}}}
+
+export type optionChat='channel'|'conversation';
