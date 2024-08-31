@@ -130,3 +130,8 @@ npm i socket.io-client and socket.io
    </Badge>
    }
 6. call socket-indicator to your current page render : <SocketIndicator/>
+Note : .env 
+==> I create NEXT_PUBLIC_SOCKET_PATH to store path of '/api/socket/io' => process.env.NEXT_PUBLIC_SOCKET_PATH='/api/socket/io'
+because I protect path in socket-provider.tsx and path in io.ts different because when both of path different socket.io will error
+can't listen different port;
+example : you make action at port : A and you listen at port : B 

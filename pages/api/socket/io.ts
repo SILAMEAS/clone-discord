@@ -10,7 +10,7 @@ export const config={
 }
 const ioHandler=(req:NextApiResponse,res:NextApiResponseServerIo)=>{
     if(!res.socket.server.io){
-        const path="/api/socket/io";
+        const path=process.env.NEXT_PUBLIC_SOCKET_PATH;
         const httpServer:NetServer=res.socket.server as any;
         res.socket.server.io = new ServerIO(httpServer,{
             path:path,
