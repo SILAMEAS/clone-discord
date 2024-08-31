@@ -8,7 +8,7 @@ import {Plus} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import axios from "axios";
 import qs from "query-string";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import {EmojiPicker} from "@/components/emoji-picker";
 import {useRouter} from "next/navigation";
 

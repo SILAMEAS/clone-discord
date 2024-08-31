@@ -49,7 +49,7 @@ export const FileUpload = (props: Readonly<IFileUpload>) => {
         );
     }
     return (
-        <div className="w-full pb-10 py-14 px-40 border-2 border-zinc-400 border-dashed rounded-md  m-4 mb-10">
+        <div className="w-full pt-10 pb-20">
             <UploadButton
                 endpoint={endpoint as any}
                 onClientUploadComplete={(res) => {
@@ -59,10 +59,15 @@ export const FileUpload = (props: Readonly<IFileUpload>) => {
           alert(`ERROR! ${error.message}`);
         }}
         appearance={{
-          button: {
-           width:'100%',
-            backgroundColor: "blue",
-          },
+            container: {
+                paddingLeft:"30px",
+                paddingRight:"30px",
+                width:"auto"
+            },
+            button: {
+                color:"black",
+                fontWeight:700,
+            }
         }}
       />
       {/* <UploadDropzone

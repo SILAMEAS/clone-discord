@@ -1,9 +1,9 @@
 "use client";
-import { ActionTooltip } from "@/components/action-tooltip";
-import { useModal } from "@/hooks/use-modal-store";
-import { IServerWithMembersWithProfiles } from "@/type";
-import { MemeberRole, TypeChannel } from "@prisma/client";
-import { Plus, Settings } from "lucide-react";
+import {ActionTooltip} from "@/components/action-tooltip";
+import {useModal} from "@/hooks/store/use-modal-store";
+import {IServerWithMembersWithProfiles} from "@/type";
+import {MemeberRole, TypeChannel} from "@prisma/client";
+import {Plus, Settings} from "lucide-react";
 
 interface IServerSection {
   label?: string;

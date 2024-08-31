@@ -1,11 +1,5 @@
 "use client";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle,} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,25 +11,16 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { UserAvatar } from "@/components/user-avatar";
-import { useModal } from "@/hooks/use-modal-store";
-import { IServerWithMembersWithProfiles } from "@/type";
-import { MemeberRole } from "@prisma/client";
+import {ScrollArea} from "@/components/ui/scroll-area";
+import {UserAvatar} from "@/components/user-avatar";
+import {useModal} from "@/hooks/store/use-modal-store";
+import {IServerWithMembersWithProfiles} from "@/type";
+import {MemeberRole} from "@prisma/client";
 import axios from "axios";
-import {
-  Check,
-  Gavel,
-  Loader2,
-  MoreVertical,
-  Shield,
-  ShieldAlert,
-  ShieldCheck,
-  ShieldQuestion,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
+import {Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion,} from "lucide-react";
+import {useRouter} from "next/navigation";
 import qs from "query-string";
-import { useState } from "react";
+import {useState} from "react";
 
 const roleIconMap = {
   GUEST: null,

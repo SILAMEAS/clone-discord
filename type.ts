@@ -1,4 +1,4 @@
-import {Member, Profile, Server} from "@prisma/client";
+import {Member, Message, Profile, Server} from "@prisma/client";
 import {ReactNode} from "react";
 import {NextApiResponse} from "next";
 // import {Socket} from "node:net";
@@ -15,3 +15,9 @@ export type IPrismaMember = Member & { profile: Profile };
 export type NextApiResponseServerIo=NextApiResponse&{socket:Socket&{server:NetServer&{io:SocketIOServer}}}
 
 export type typeOptionChat='channel'|'conversation';
+
+export type typeParamkey='channelId'|'conversationId';
+export type IMassageWithMemberWithProfile = Message & {
+  member: (Member & { profile: Profile });
+};
+export type IMemberWithProfile = Member&{profile:Profile}

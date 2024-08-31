@@ -1,7 +1,7 @@
 "use client";
 import {iconMapOnlyNameTag} from "@/app/utils/constants/constant";
 import {ActionTooltip} from "@/components/action-tooltip";
-import {ModalType, useModal} from "@/hooks/use-modal-store";
+import {ModalType, useModal} from "@/hooks/store/use-modal-store";
 import {cn} from "@/lib/utils";
 import {Channel, MemeberRole, Server} from "@prisma/client";
 import {Edit, Lock, Trash} from "lucide-react";

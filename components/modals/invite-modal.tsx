@@ -1,7 +1,7 @@
 "use client";
 import {Dialog, DialogContent, DialogHeader, DialogTitle,} from "@/components/ui/dialog";
 import React, {useState} from "react";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";

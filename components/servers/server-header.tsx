@@ -6,7 +6,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import {IServerWithMembersWithProfiles} from "@/type";
 import {MemeberRole} from "@prisma/client";
 import {ChevronDown, LogOut, PlusCircle, Settings, Trash, User, UserPlus,} from "lucide-react";

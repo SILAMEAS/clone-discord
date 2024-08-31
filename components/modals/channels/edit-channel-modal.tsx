@@ -4,7 +4,7 @@ import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,} from "@
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {TypeChannel} from "@prisma/client";
 import axios from "axios";

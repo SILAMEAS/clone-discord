@@ -8,7 +8,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import React, {useState} from "react";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import axios from "axios";
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";

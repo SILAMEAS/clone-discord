@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,12 +8,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useModal } from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import axios from "axios";
-import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import {Loader2} from "lucide-react";
+import {useRouter} from "next/navigation";
 import qs from "query-string";
-import { useState } from "react";
+import {useState} from "react";
 
 const DeleteChannelModal = () => {
   const {

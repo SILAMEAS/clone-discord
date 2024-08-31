@@ -16,7 +16,7 @@ import {useRouter} from "next/navigation";
 import React from "react";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {useModal} from "@/hooks/use-modal-store";
+import {useModal} from "@/hooks/store/use-modal-store";
 import qs from "query-string";
 
 const formSchema = z.object({
