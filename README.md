@@ -142,3 +142,6 @@ rm -rf .next
 npm i
 npx prisma generate
 
+yarn upgrade
+yarn build
+

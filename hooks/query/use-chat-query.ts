@@ -1,5 +1,4 @@
 import {typeParamkey} from "@/type";
-import {useSocket} from "@/components/providers/socket-provider";
 import qs from "query-string";
 import {useInfiniteQuery} from "@tanstack/react-query";
 
@@ -9,11 +8,12 @@ interface IChatQuery{
     apiUrl:string;
     paramKey:typeParamkey,
     paramValue:string;
+    isConnected?:boolean
 }
 export const userChatQuery=({
-queryKey, apiUrl,paramKey,paramValue
+queryKey, apiUrl,paramKey,paramValue,isConnected
 }:IChatQuery)=>{
-    const {isConnected}=useSocket();
+    // const {isConnected}=useSocket();
     const fetchMessages=async ({pageParam=undefined})=>{
         const url=qs.stringifyUrl({
             url:apiUrl,

@@ -5,6 +5,7 @@ import {db} from "@/lib/db";
 import {getOrCreateConversations} from "@/lib/conversation";
 import {ChatHeader} from "@/components/chat/chat-header";
 import {ChatInput} from "@/components/chat/chat-input";
+import {ChatMessages} from "@/components/chat/chat-message";
 
 interface IConversationIdPage{
    params:{
@@ -35,10 +36,20 @@ const ConversationIdPage =async ({params:{memberId,serverId}}:IConversationIdPag
     return (
         <div className={'bg-white dark:bg-[#313338] flex flex-col h-full'}>
             <ChatHeader serverId={serverId} name={otherMember.profile.name} type={'conversation'} imageUrl={otherMember.profile.imageUrl}/>
+            <ChatMessages
+                apiUrl={'/api/direct-messages'}
+                chatId={conversation.id}
+                name={otherMember.profile.name}
+                type={'conversation'}
+                member={currentMember}
+                socketUrl={`${process.env.NEXT_PUBLIC_SOCKET_URL}/direct-messages`}
+                socketQuery={{conversationId:conversation.id}}
+                paramKey={"conversationId"}
+                paramValue={conversation.id}/>
             <ChatInput
                 type={'conversation'}
                 name={otherMember.profile.name}
-                apiUrl={`${process.env.NEXT_PUBLIC_SOCKET_URL}/messages`}
+                apiUrl={`${process.env.NEXT_PUBLIC_SOCKET_URL}/direct-messages`}
                 query={{
                     conversationId:conversation.id,
                     serverId,

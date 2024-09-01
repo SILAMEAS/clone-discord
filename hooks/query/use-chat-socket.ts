@@ -9,6 +9,7 @@ type ChatSocketProps={
     queryKey:string;
 }
 export const useChatSocket=({addKey,updateKey,queryKey}:ChatSocketProps)=>{
+    console.log("useChatSocket",useChatSocket)
     const {socket}=useSocket();
     const queryClient=useQueryClient();
     useEffect(()=>{
